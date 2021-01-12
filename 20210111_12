@@ -1,0 +1,15 @@
+#include <stdio.h>
+
+
+
+int main()
+
+{int a=12492;
+int mask=584;
+a=a|mask;
+printf("%d",a);
+
+
+
+
+}

@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+int vdigniBitNa(int a, int index);
+
+int main(){
+    int a=3;
+    printf("%d,",vdigniBitNa(a,7));
+
+}
+
+
+    int vdigniBitNa(int a,int index)
+    { 
+        
+        int mask=1<<index;
+        a=a|mask;
+        
+
+        
+        
+    
+
+}

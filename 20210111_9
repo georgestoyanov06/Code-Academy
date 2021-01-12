@@ -1,0 +1,9 @@
+#include <stdio.h>
+
+int main()
+{int a=189;
+int mask=17<<3;
+a=a&mask;
+printf("%d",a);
+return 0;
+}

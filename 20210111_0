@@ -1,0 +1,16 @@
+#include <stdio.h>
+int addDiggit(int a,int b);
+int main()
+{
+int rez =addDiggit(5,7);
+printf("%d",rez);
+
+
+}
+
+        int addDiggit(int a,int b)
+        {
+            int rez;
+            rez=a+b;
+            return rez;
+        }

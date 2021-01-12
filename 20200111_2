@@ -1,0 +1,18 @@
+#include <stdio.h>
+
+int bit(int a, int index);
+
+
+
+
+int main(){
+    int a=3;
+    printf("%d,",bit(a,7));
+
+}
+int bit(int a,int index)
+{int h =1;
+a=a>>index;
+a=a&h;
+return a;
+}

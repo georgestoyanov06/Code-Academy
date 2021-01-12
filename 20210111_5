@@ -1,0 +1,11 @@
+#include <stdio.h>
+ int obarniBita(int a, int index)
+{int mask=1<<index;
+a=a^mask;
+return a;
+
+
+}
+int main()
+{int a=10;
+printf("%d",obarniBita(a,2));}

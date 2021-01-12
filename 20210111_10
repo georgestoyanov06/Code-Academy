@@ -1,0 +1,8 @@
+#include <stdio.h>
+int main()
+{int a=511;
+int mask=~1022;
+a=a&mask;
+printf("%d",a);
+
+}

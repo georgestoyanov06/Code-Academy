@@ -1,0 +1,11 @@
+#include <stdio.h>
+ int vdigniBitana(int a, int index)
+{int mask=1<<index;
+a=a|mask;
+return a;
+
+
+}
+int main()
+{int a=2;
+printf("%d",vdigniBitana(a,3));}

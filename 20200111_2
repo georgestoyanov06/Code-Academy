@@ -13,6 +13,6 @@ int main(){
 int bit(int a,int index)
 {int mask =1;
 a=a>>index;
-a=a&h;
+a=a&mask;
 return a;
 }

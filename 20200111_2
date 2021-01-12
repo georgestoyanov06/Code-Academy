@@ -6,12 +6,12 @@ int bit(int a, int index);
 
 
 int main(){
-    int a=3;
-    printf("%d,",bit(a,7));
+    int a=140;
+    printf("%d,",bit(a,4));
 
 }
 int bit(int a,int index)
-{int h =1;
+{int mask =1;
 a=a>>index;
 a=a&h;
 return a;

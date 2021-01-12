@@ -1,8 +1,9 @@
 #include <stdio.h>
 int main()
 {int a=511;
-int mask=~1022;
-a=a&mask;
+int n=1;
+int mask=1<<n;
+ a=a&mask;
 printf("%d",a);
 
 }

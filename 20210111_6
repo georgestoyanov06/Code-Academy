@@ -1,0 +1,9 @@
+#include <stdio.h>
+ int main()
+{int a=10;
+ int index=2;
+int mask=1<<index;
+a=a^mask;
+printf("%d",a);
+return 0;
+}

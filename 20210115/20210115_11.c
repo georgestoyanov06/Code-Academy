@@ -2,8 +2,8 @@
 
 
 int main(void){
-   char str[]="hello\0";
-   char rts[]="     ";
+   char str[]="hello";
+   char rts[6]="";
 
    rts[0]=str[4];
    rts[1]=str[3];

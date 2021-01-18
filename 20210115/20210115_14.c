@@ -1,7 +1,7 @@
 #include <stdio.h>
 extern int a;
 
-void test()
+void g_test()
 {       
        static a++;
         printf("%d\n",a);
@@ -10,9 +10,9 @@ void test()
    
 
     int main(){
-        test();
-        test();
-        test();
+        g_test();
+        g_test();
+        g_test();
         
     }
     

@@ -1,18 +1,18 @@
 #include <stdio.h>
 extern int a;
 
-void g_test()
+void test()
 {       
-       static a++;
+         a++;
         printf("%d\n",a);
 
 }
    
 
     int main(){
-        g_test();
-        g_test();
-        g_test();
+        test();
+        test();
+        test();
         
     }
     

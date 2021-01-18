@@ -1,5 +1,5 @@
 #include <stdio.h>
-extern int a;
+extern int g_a;
 
 void g_test()
 {       
@@ -17,4 +17,4 @@ void g_test()
     }
     
     
-    int a=10;
+    int g_a=10;

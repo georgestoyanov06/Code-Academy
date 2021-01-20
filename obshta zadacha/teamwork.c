@@ -28,23 +28,23 @@ int main(){
         if(choice=='1'){
             printf("Your choice is Luxury room.\n");
             printf("How many nights you are going to stay?\n");
-            scanf("%hu", &nightsLuxury);
+            scanf("%d", &nightsLuxury);
             printf("hom many rooms of this do you want\n");
-            scanf("%hu",&roomsLuxury);
+            scanf("%d",&roomsLuxury);
             subTotal = (subTotal + (nightsLuxury * luxRoomPrice*roomsLuxury));
             roomsLuxuryTottal=roomsLuxury + roomsLuxuryTottal;
             nightsLuxuryTottal= nightsLuxury+nightsLuxuryTottal;
-            printf("Your bill for %u night and %u rooms from luxury class is  %.2f\n",nightsLuxuryTottal,roomsLuxuryTottal, subTotal);} 
+            printf("Your bill is  %.2f\n%u standart rooms for %u nights\n%u Luxury rooms for %u nights",subTotal,roomStandartTottal,nightsSttandartTotattl,roomsLuxuryTottal,nightsLuxuryTottal);} 
         else if (choice=='2'){
             printf("Your choice is Standart room.\n");
             printf("How many nights you are going to stay?\n");
-            scanf("%hu", &nightsStandart);
+            scanf("%d", &nightsStandart);
             printf("hom many rooms of this do you want\n");
-            scanf("%hu",&roomStandart);
+            scanf("%d",&roomStandart);
             subTotal = (subTotal + (nightsStandart *standartRoomPrice*roomStandart));
             roomStandartTottal=roomStandart+roomStandartTottal;
             nightsSttandartTotattl=nightsStandart+nightsSttandartTotattl;
-            printf("Your bill for %u night and %u rooms from luxury class is  %.2f\n",nightsSttandartTotattl,roomStandartTottal, subTotal);}
+            printf("Your bill is  %.2f\n%u standart rooms for %u nights\n%u Luxury rooms for %u nights",subTotal,roomStandartTottal,nightsSttandartTotattl,roomsLuxuryTottal,nightsLuxuryTottal);}
         else if( choice=='3')
         {break;}
         else 

@@ -30,9 +30,9 @@ int main()
 
     while (choice != '3')
     {
-        printf("For luxury room type 1.\n");
+        printf("######################\nFor luxury room type 1.\n");
         printf("For standart room type 2.\n");
-        printf("For exit type 3.\n");
+        printf("For exit type 3.\n######################\n");
         scanf("%s", &choice);
         if (choice == '1')
         {

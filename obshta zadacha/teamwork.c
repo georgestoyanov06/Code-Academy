@@ -72,7 +72,7 @@ int main()
 
     if (totalNights > 5 && subTotal < 700)
     {
-        printf("You have 15 percent discount.\n");
+        printf("You get 15 percent discount.\n");
         double discount1 = subTotal * 0.15;
         printf("Your discount is %.2f leva.\n", discount1);
         subTotal = subTotal - discount1;
@@ -93,7 +93,7 @@ int main()
         {
             case 1:
             
-                printf("You have 15 percent discount.\n");
+                printf("You get 15 percent discount.\n");
                 discount2 = subTotal * 0.15;
                 printf("Your discount is %.2f leva.\n", discount2);
                 subTotal = subTotal - discount2;
@@ -102,7 +102,7 @@ int main()
                 break;
 
             case 2:
-                printf("You have chosen a spa procedure for 100 leva.\n");
+                printf("You get a spa procedure for 100 leva.\n");
                 goto finalOffer;
                 break;
         }
@@ -122,7 +122,7 @@ int main()
         {
              case 1:
             
-                 printf("You have 20 percent discount.\n");
+                 printf("You get 20 percent discount.\n");
                  discount3 = subTotal * 0.20;
                  printf("Your discount is %.2f leva.\n", discount3);
                  subTotal = subTotal - discount3;
@@ -131,12 +131,12 @@ int main()
                  break;
 
             case 2:
-                 printf("You have chosen a spa procedure for 100 leva.\n");
+                 printf("You get a spa procedure for 100 leva.\n");
                  goto finalOffer;
                  break;
 
             case 3:
-                printf("You have chosen 2 free dinners for your family.\n");
+                printf("You get 2 free dinners for your family.\n");
                 goto finalOffer;
                 break;
         }

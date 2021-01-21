@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <string.h>
-int valiDdate();
+int validDate();
 
 int main()
 {

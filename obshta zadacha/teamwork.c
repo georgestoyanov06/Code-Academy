@@ -150,13 +150,14 @@ int main()
         toristTax = subTotal * 0.06;
         printf("You owe tourist tax: %.2f leva.\n", toristTax);
         total = subTotal + toristTax;
-        printf("Your final offer is:\n");
+        printf("######################\nYour final offer is:\n");
         printf("Standart rooms: %d\n", roomStandartTotal);
         printf("Luxury rooms: %d\n", roomsLuxuryTotal);
         printf("Total nights: %d\n", totalNights);
-        printf("Final bill: %.2f leva\n", total);
+        printf("Final bill: %.2f leva\n######################\n", total);
         validDate();
-    return 0;
+
+   return 0;
 }
  int validDate(){
     time_t t;

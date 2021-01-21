@@ -202,9 +202,11 @@ validDate();
     return 0;
 }
  int validDate(){
-time_t t;
-    char* c_t;
+    time_t t;
     t=time(NULL);
     t+=14*24*60*60;
-    c_t=ctime(&t);
-    printf("Offer is valid until %s", c_t );}
+    
+
+    printf("Offer is valid until %s", ctime(&t) );
+    
+ }

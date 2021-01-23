@@ -5,13 +5,21 @@ int main(void){
     int n;
     int b;
     char s[64]="";
+    char isNegative = 0;
     printf("Enter a whole number: ");
     scanf("%d", &n);
+    if (n < 0) {
+        isNegative = 1;
+        n = -n;
+    }
     printf("\nEnter a base for conversion: ");
     scanf("%d", &b);
+    while (b < 2 || b > 64) {
+        printf("\nEnter a valid base for conversion (between 2 and 36): ");
+        scanf("%d", &b);
+    }
     itob(n,s,b);
     printf("%s\n",strrev(s));
-    
  }
  void itob(int n,char s[],int b){
      int i=0;
@@ -24,6 +32,4 @@ int main(void){
        c++;
     }    
     while(n>0);
-    
-   
  }

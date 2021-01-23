@@ -4,14 +4,13 @@ void itob();
 int main(void){
     int n;
     int b;
-    char s[64];
+    char s[64]="";
     printf("Enter a whole number: ");
     scanf("%d", &n);
     printf("\nEnter a base for conversion: ");
     scanf("%d", &b);
     itob(n,s,b);
-    strrev(s);
-    printf("%s",s);
+    printf("%s\n",strrev(s));
     
  }
  void itob(int n,char s[],int b){

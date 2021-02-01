@@ -30,25 +30,25 @@ int main(){
         oddNumberSum=(barCode[i]-'0')+oddNumberSum;
           
         }    
-    for(i=1;i<12;i+=2)
+    for(i=1;i<10;i+=2)
         {
         evenNumberSum=(barCode[i]-'0')+evenNumberSum;
         
         }
         
     proverka=((oddNumberSum*3)+evenNumberSum)-1;
-
+    printf("proverka:%c %d\n",proverka,proverka);
      
     if (proverka < 0)
      {
          proverka=proverka*(-1);
-         proverka=9-(proverka/10);
+         proverka=9-(proverka%=10);
 
      }
     else{
-         proverka=9-(proverka/10);
+         proverka=9-(proverka%=10);
      }
-     
+    printf("proverka%c %d\n",proverka,proverka);
     if((proverka+'0')==barCode[11]) { 
          
          printf("Barcode is valide");

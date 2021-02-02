@@ -5,6 +5,7 @@
 #include <stdio.h>
 int atof(char *s);
 
+
 int main(){
     char s[]="-1a1ea43323D2adaav233dadaa.12aaa33d1ecca3";
    atof(s);

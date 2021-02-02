@@ -4,7 +4,6 @@
 отрицателно и, ако е така, включете знака в резултата*/
 #include <stdio.h>
 int atof(char *s);
-void isDiggit();
 
 int main(){
     char s[]="-1a1ea43323D2adaav233dadaa.12aaa33d1ecca3";

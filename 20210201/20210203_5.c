@@ -12,7 +12,7 @@ x), която получава като първи аргумент начал�
  int binarySearch(int a[], int n, int x);
 int main(void){
     int a[20]={1,2,5,23,26,29,34,39,50,56,78,100,125,230,245,300,301};
-    binarySearch(a,20,245);
+  printf("%d position",binarySearch(a,20,245));
 
 }
 int binarySearch(int a[], int n, int x){
@@ -20,7 +20,7 @@ int binarySearch(int a[], int n, int x){
     if(x>a[n/2]){
         for(i=n/2 ;i<=n;i++){
             if(a[i]==x){
-            printf("chisloto suvpada na poziciq=%d\n",i);
+            return i;
         }
     
         }
@@ -28,10 +28,11 @@ int binarySearch(int a[], int n, int x){
     else if(x<a[n/2]){
         for(i=0 ; i<=n/2 ; i++){
             if(a[i]==x){
-            printf("chisloto suvpada na poziciq=%d\n",i);
+            return i;
         }
     
         }
 
     }
+    return -1;
 }

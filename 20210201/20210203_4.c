@@ -9,15 +9,16 @@
 int linSearch(int a[], int l, int d);
 int main(void){
     int a[13]={20,10,30,2,3,4,1,1222,231,13,213,5,923};
-    linSearch(a,13,5);
+   printf("%d position", linSearch(a,13,5));
 }
 
 int linSearch(int a[], int l, int d){
     int i;
     for(i=0;i<=l;i++){
         if(a[i]==d){
-            printf("chisloto suvpada na poziciq=%d\n",i);
+            return i;
         }
     
     }
+    return -1;
 }

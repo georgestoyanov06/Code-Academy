@@ -4,7 +4,7 @@
 отрицателно и, ако е така, включете знака в резултата*/
 #include <stdio.h>
 int atof(char *s);
-void isDigit(char *s);
+void isDiggit();
 
 int main(){
     char s[]="-1a1ea43323D2adaav233dadaa.12aaa33d1ecca3";
@@ -49,16 +49,4 @@ int atof(char *s){
     printf("power %f\n",power);
     printf("to float %lf \n",n/power);
 }
-
-void isDigit(char *s){
-    int i;
-    if(s[i]>='0' && s[i]<='9'){
-        return 1;
-        
-
-    }
-    else{
-        return 0;
-    }
-
-}
+void isdi

@@ -1,0 +1,7 @@
+CC=gcc
+CFILE=projectitob.c
+TARGET=newprojecet
+all:   
+	$(CC) $(CFILE) -o $(TARGET)
+clean:
+	del projectitob.c

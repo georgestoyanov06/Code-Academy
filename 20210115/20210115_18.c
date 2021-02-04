@@ -6,7 +6,7 @@ unsigned short int priceKaravana=90;
 unsigned short int priceKemper=100;
 unsigned short int broiKaravani=3;
 unsigned short int broiKepmperi=3;
-int jelanie;
+char jelanie;
 unsigned short int smetka;
 char exit;
 

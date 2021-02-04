@@ -20,7 +20,7 @@ int main(){
     *(cP+9)*=3;
 
     while(i<10){
-        printf("c[%d]=%d\n",i,c[i]);
+        printf("*cP(%d)= %d \n",i,*(cP+i));
         i++;
     }
     

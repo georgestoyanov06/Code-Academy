@@ -6,13 +6,12 @@
 void itob(int n,char *s,int b);
 void reverse(char* s);
 void itoa(int a,char *s);
+int atof(char *s);
 
 int main(){
    
-    char s[50];
-    itoa(123,s);
-    reverse(s);
-    printf("itoa s=%s\n",s);
+    char s[]="-1a1ea43323D2adaav233dadaa.12aaa33d1ecca3";
+   atof(s);
     
  }
 void itob(int n,char *s,int b){
@@ -56,9 +55,44 @@ void reverse(char* s){
  }
  void itoa(int a,char *s){
     int i;
-    
-    
     do{
         *(s++)=a%10+'0';
         a/=10;
     }while(a>0);}
+int atof(char *s){
+    double n;
+    double power=1.0;
+    int i=0;
+    n=0.0;
+    if(*s=='-'){
+       *(s+=1);
+    }
+    for (;*s>='0' && *s<='9';s++){
+        n=10.0*n +(*s-'0');
+        
+            while((*(s+1)>='a' && *(s+1)<='z')||*(s+1)>='A'&& *(s+1)<='Z'&&*(s+1)!='.'){
+                s++;
+        
+            
+        }   
+    }
+    
+    
+    if(*s=='.'){
+            s++;}
+    for(power=1.0;*s>='0' && *s<='9';s++) {
+                n=10.0*n+(*s-'0');
+                power=power*10;
+                
+                    while((*(s+1)>='a' && *(s+1)<='z') || (*(s+1))>='A' && (*(s+1)) <='Z'){
+                     s++   ;
+        
+      
+           }   
+              }
+    if(*s=='-'){
+        n=n*(-1);
+    }
+    printf("power %f\n",power);
+    printf("to float %lf \n",n/power);
+}

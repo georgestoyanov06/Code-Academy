@@ -11,7 +11,7 @@ int main(){
     }
 
 void*  my_strcpy(char *t,char *s){
-    for(;*t;t++,s++){
+    for(;*s!='\0';t++,s++){
         *s=*t;
         
     }

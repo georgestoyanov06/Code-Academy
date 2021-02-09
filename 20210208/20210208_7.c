@@ -5,15 +5,20 @@
 
 #include <stdio.h>
 
-extern int g_arr[][13];
+
 int fun(int year,int month,int day);
-
+extern int g_arr[][13];
 int main(){
-    int year ,month, day;
-    g_arr [1][13]= {
-       {0,31,28,31,30,31,30,31,31,30,31,30,31},
-
-       {0,31,29,31,30,31,30,31,31,30,31,30,31}} ;
+    int year;
+    int month;
+    int day;
+    g_arr[1][13]=
+    
+    {
+        {0,31,28,31,30,31,30,31,31,30,31,30,31},
+        {0,31,29,31,30,31,30,31,31,30,31,30,31}
+    }
+       ;
        
        
     scanf("%d, %d ,%d",&year,&month,&day);

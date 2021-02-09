@@ -20,9 +20,11 @@ int main(){
     }
        ;
        */
-       
+    printf("Write down year:\n");
     scanf("%d",&year);
+    printf("Write down month:\n");
     scanf("%d",&month);
+    printf("Write down day:\n");
     scanf("%d",&day);
     fun(year,month,day);
 }
@@ -48,7 +50,7 @@ int fun(int year,int month,int day){
     for(j,i=0;i<month;i++){
         poredenDen+=g_arr[j][i];
     }
-    printf("%d\n",poredenDen+=day);
+    printf("%d %d %d is %d day of the year\n",day,month,year,poredenDen+=day);
 }
 
 int g_arr[][13]={

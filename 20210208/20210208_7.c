@@ -12,16 +12,18 @@ int main(){
     int year;
     int month;
     int day;
-    g_arr[1][13]=
+   /* g_arr[2][13]=
     
     {
         {0,31,28,31,30,31,30,31,31,30,31,30,31},
         {0,31,29,31,30,31,30,31,31,30,31,30,31}
     }
        ;
+       */
        
-       
-    scanf("%d, %d ,%d",&year,&month,&day);
+    scanf("%d",&year);
+    scanf("%d",&month);
+    scanf("%d",&day);
     fun(year,month,day);
 }
 int fun(int year,int month,int day){
@@ -43,8 +45,13 @@ int fun(int year,int month,int day){
         else {
              j=0;
    }
-    for(j,i=0;i<=month;i++){
+    for(j,i=0;i<month;i++){
         poredenDen+=g_arr[j][i];
     }
     printf("%d\n",poredenDen+=day);
 }
+
+int g_arr[][13]={
+        {0,31,28,31,30,31,30,31,31,30,31,30,31},
+        {0,31,29,31,30,31,30,31,31,30,31,30,31}
+    };

@@ -38,6 +38,6 @@ int main(){
        
         printf("if you want new password pres 1\n");
         printf("for exit pres 2\n");
-        scanf("%c",&choice);
+        scanf(" %c",&choice);
     }
 }

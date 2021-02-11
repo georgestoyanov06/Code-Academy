@@ -6,7 +6,7 @@
 #include <time.h>
 int main(){
     
-    char choice=0;
+    char choice='1';
     int i;
     int p;
     
@@ -16,9 +16,7 @@ int main(){
     
     
     while(choice!='2'){
-        printf("if you want new password pres 1\n");
-        printf("for exit pres 2\n");
-        scanf("%c",&choice);
+        
        
         if(choice=='1'){
         
@@ -38,6 +36,8 @@ int main(){
             break;
         }
        
-        
+        printf("if you want new password pres 1\n");
+        printf("for exit pres 2\n");
+        scanf("%c",&choice);
     }
 }

@@ -22,7 +22,7 @@ struct information{
     char position[15];
     int exp;
     float salary;
-    struct information *manager;
+    struct information* m_manager;
 
 
 };
@@ -43,7 +43,7 @@ void enterInformation(struct information *array, int index)
     scanf("%d", &array[index].exp);
     printf("Enter employee salary:");
     scanf("%lf", &array[index].salary);
-    printf("Enter employee number: ");
+  /*  printf("Enter employee number: ");
     scanf(" %d", &array[index].manager->number);
     printf("Enter employee first name:");
     scanf("%s", &array[index].manager->firstName);
@@ -56,7 +56,7 @@ void enterInformation(struct information *array, int index)
     printf("Enter employee work experience:");
     scanf("%d", &array[index].manager->exp);
     printf("Enter employee salary:");
-    scanf("%lf", &array[index].manager->salary);
+    scanf("%lf", &array[index].manager->salary);*/
 };
 
 /*struct boss{
@@ -70,13 +70,13 @@ void enterInformation(struct information *array, int index)
 }*/
 
 int main(){
-    struct information list[listSize];
+    struct information list={1,"ivan","ivan","ivan","ceo",24,143};
     
     
-    for (int i = 0; i < listSize+1; i++)
+   /* for (int i = 0; i < listSize+1; i++)
     {
         enterInformation(list,i);
         
-    }
+    }*/
 
 }

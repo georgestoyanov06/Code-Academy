@@ -73,10 +73,10 @@ int main(){
     struct information list[listSize];
     
     
-    for (int i = 0; i < listSize; i++)
+    for (int i = 0; i < listSize+1; i++)
     {
         enterInformation(list,i);
-        printList(list);
+        
     }
 
 }

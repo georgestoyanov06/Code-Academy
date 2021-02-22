@@ -13,7 +13,7 @@ In progresss..................
 */
 
 #include <stdio.h>
-#define listSize 3
+#define listSize 10
 struct information{
     int number;
     char firstName[20];
@@ -26,8 +26,11 @@ struct information{
 
 
 };
-void enterInformation(struct information *array, int index)
+struct information Ivan={1,"ivan","georgiev","ivanov","ceo",23,25000};
+
+void enterInformation(struct information *array)
 {
+    for(int index=0;index<listSize;index++ ){
     printf("Employee Informattion\n");
     printf("Enter employee number: ");
     scanf(" %d", &array[index].number);
@@ -42,41 +45,41 @@ void enterInformation(struct information *array, int index)
     printf("Enter employee work experience:");
     scanf("%d", &array[index].exp);
     printf("Enter employee salary:");
-    scanf("%lf", &array[index].salary);
-  /*  printf("Enter employee number: ");
-    scanf(" %d", &array[index].manager->number);
-    printf("Enter employee first name:");
-    scanf("%s", &array[index].manager->firstName);
-    printf("Enter employee secomd:");
-    scanf("%s", &array[index].manager->secondName);
-    printf("Enter employee third name:");
-    scanf("%s", &array[index].manager->thirdName);
-    printf("Enter employee position:");
-    scanf("%s", &array[index].manager->position);
-    printf("Enter employee work experience:");
-    scanf("%d", &array[index].manager->exp);
-    printf("Enter employee salary:");
-    scanf("%lf", &array[index].manager->salary);*/
+    scanf("%float", &array[index].salary);
+    }
+
 };
-
-/*struct boss{
-    int number;
-    char firstName[20];
-    char secondName[20];
-    char thirdName[20];
-    char position[15];
-    char exp;
-    double salary;
-}*/
-
-int main(){
-    struct information list={1,"ivan","ivan","ivan","ceo",24,143};
-    
-    
-   /* for (int i = 0; i < listSize+1; i++)
+void printList(struct information *array)
+{
+    for (int i = 0; i < listSize; i++)
     {
-        enterInformation(list,i);
+        printf("=============================\n");
+        printf("------Employee Details-------\n");
+        printf("Employee number: %d\n", array[i].number);
+        printf("Employee full name: %s %s %s\n", array[i].firstName, array[i].secondName, array[i].thirdName);
+        printf("Employee position: %s\n", array[i].position);
+        printf("Employee work experience: %d\n", array[i].exp);
+        printf("Employee salary: %.2f\n", array[i].salary);
+        printf("      Manager Details       \n");
+        printf("Manager number: %d\n", array[i].m_manager->number);
+        printf("Manager full name: %s %s %s\n", array[i].m_manager->firstName, array[i].m_manager->secondName, array[i].m_manager->thirdName);
+        printf("Manager position: %s\n", array[i].m_manager->position);
+        printf("Manager work experience: %d\n", array[i].m_manager->exp);
+        printf("Manager salary: %.2f\n", array[i].m_manager->salary);
         
-    }*/
+    }
+};
+void managerTeam(struct information teamManager,struct information *emploees){
+    for (int i;i<listSize;i++){
+        emploees[i].m_manager=&teamManager;
+    }
+}
+int main(){
 
+    struct information list[listSize];
+    enterInformation(list);
+    managerTeam(Ivan,list);
+    printList(list);
+
+    
 }

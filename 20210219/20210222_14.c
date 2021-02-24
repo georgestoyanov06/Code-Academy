@@ -6,9 +6,9 @@
 #include <stdio.h>
 extern int g_arr[][13];
 struct date{
-    unsigned day;
-    unsigned month : 6;
-    unsigned year : 15;
+    unsigned day:5;
+    unsigned month : 4;
+    unsigned year ;
 
 };
 

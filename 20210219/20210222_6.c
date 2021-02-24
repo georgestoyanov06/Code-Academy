@@ -50,7 +50,7 @@ void addHours(struct tagTMyTime *time,int hours){
 
 };
 void printTime(struct tagTMyTime time){
-    printf("%d:% d:%d\n", time.hours, time.minutes, time.seconds);
+    printf("%02d:%02d:%02d\n", time.hours, time.minutes, time.seconds);
 }
 
 struct tagTMyTime add(struct tagTMyTime *time,struct tagTMyTime *time1){

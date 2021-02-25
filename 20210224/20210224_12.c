@@ -21,10 +21,10 @@ return x > y ? x : y;
 #define GENERIC_MAX(type)
 #define type type##_max(type x, type y)\
 {   return x > y ? x : y;}
- GENERIC_MAX(int);
+
 
 int main(){
-   
+    GENERIC_MAX(int);
     int a=5;
     int c=6;
     int d= int_max(a,c);

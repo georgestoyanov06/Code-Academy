@@ -18,9 +18,9 @@ return x > y ? x : y;
 */
 #include <stdio.h>
 
-#define GENERIC_MAX(type)
-#define type type##_max(type x, type y)\
-{   return x > y ? x : y;}
+#define GENERIC_MAX(type)\
+  type type##_max(type x, type y)\
+ {return x > y ? x : y;}
 
 
 int main(){

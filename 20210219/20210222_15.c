@@ -34,7 +34,7 @@ void printValues(struct tagStruc *info){
    /*искам да принтирам само мъжки пол*/
     for(int i=0;i<listSize;i++){
         if(info[i].g==MALE){
-            printf("number %d job %s salary %lf\n",info[i].iVar,info[i].sVar,info[i].dVar);
+            printf("number %d ,job %s, salary %lf\n",info[i].iVar,info[i].sVar,info[i].dVar);
         }
         else{
             continue;

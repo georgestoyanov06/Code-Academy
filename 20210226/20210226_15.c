@@ -1,11 +1,16 @@
 #include <stdio.h>
+#include <ctype.h>
 
 
 void testFunP(int SOLITARE[][8]){
     
 for( int p=0;p<3;p++){
     for(int k=0;k<8;k++){
-    printf("\t%d ",SOLITARE[p][k]);
+        if(SOLITARE[p][k]==45){
+            printf("\t%c",SOLITARE[p][k]);
+        }
+        else{
+    printf("\t%d ",SOLITARE[p][k]);}
     }
     printf("\n");
 }
@@ -24,8 +29,7 @@ for(int i=0;i<3;i++){
    }
 printf("chose a number from 1 to 16 to move\n");
 scanf(" %d",&choice);
-
-
+if(isalpha(choice1) == 0){
 
 for(int i=0;i<3;i++){
 
@@ -51,7 +55,7 @@ switch (choice1)
 case 1:/*nadqsno*/
    
   
-    if(indexJ+2>7 || SOLITARE[indexI][indexJ+2]!=45 || SOLITARE[indexI][indexJ+1]==45 ){
+    if(indexJ+2>7 || SOLITARE[indexI][indexJ+2]!=45 || SOLITARE[indexI][indexJ+1]==45|| SOLITARE[indexI][indexJ+1]==1 ){
         printf("chose different path\n");
 
     }
@@ -63,7 +67,7 @@ case 1:/*nadqsno*/
 
     case 2:/*nagore*/
     
-    if(indexI-2<0 || SOLITARE[indexI-2][indexJ]!=45 || SOLITARE[indexI-1][indexJ]==45){
+    if(indexI-2<0 || SOLITARE[indexI-2][indexJ]!=45 || SOLITARE[indexI-1][indexJ]==45 || SOLITARE[indexI-1][indexJ]==1){
         printf("chose different path\n");
 
     }
@@ -76,7 +80,7 @@ case 1:/*nadqsno*/
     
     break;
     case 3:/*nadolu*/
-    if(indexI+2>2 || SOLITARE[indexI+2][indexJ]!=45 || SOLITARE[indexI+1][indexJ]==45){
+    if(indexI+2>2 || SOLITARE[indexI+2][indexJ]!=45 || SOLITARE[indexI+1][indexJ]==45 || SOLITARE[indexI+1][indexJ]==1){
         printf("chose different path\n");
 
     }
@@ -88,7 +92,7 @@ case 1:/*nadqsno*/
     break;
 
     case 4: /*nalqvo*/
-    if(indexJ-2<0||SOLITARE[indexI][indexJ-2]!=45 || SOLITARE[indexI][indexJ-1]==45 ){
+    if(indexJ-2<0||SOLITARE[indexI][indexJ-2]!=45 || SOLITARE[indexI][indexJ-1]==45 || SOLITARE[indexI][indexJ-1]==1 ){
         printf("chose different path\n");
     }
     else{
@@ -106,6 +110,9 @@ case 1:/*nadqsno*/
    break;
     */
 }
+}
+
+
 testFunP(SOLITARE);
 printf("do you want to rewind your board\n");
 scanf(" %d",&choice1);

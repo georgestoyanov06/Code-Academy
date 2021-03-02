@@ -54,7 +54,7 @@ void Sort(participant* participant0){
     int Number, i, j;
 
     for(i = 0; i < listSize; i++){
-        for(j = i + 1; j < listSize-1; j++){
+        for(j = i + 1; j < listSize; j++){
 
             if(strncmp(&participant0[i].firstName, &participant0[j].firstName, 1) > 0){
                 

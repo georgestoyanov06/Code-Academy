@@ -21,8 +21,8 @@ int main(){
 
  int i;
  int count=0;
-char choice='1';
-for(i=0;choice!='0';i++){
+ char choice='1';
+ for(i=0;choice!='0';i++){
     printf("enter the participant number\n");
     scanf(" %d",&participant0[i].numOfPart);
     printf("enter  the participant name : \n");
@@ -36,11 +36,10 @@ for(i=0;choice!='0';i++){
     count++;
     printf("do you have another participant to add.Press 1 or pres 0 for exit. \n");
     scanf(" %c",&choice);
-   
-
 }
-Sort(participant0);
 
+Sort(participant0);
+i=0;
 for(i=0;i<count;i++){
     printf("Num of part:%d\n",participant0[i].numOfPart);
     printf("First name:%s\n",&participant0[i].firstName);
@@ -48,17 +47,16 @@ for(i=0;i<count;i++){
     printf("age : %d\n",participant0[i].age);
 }
 
- 
  free(participant0);
 }
 void Sort(participant* participant0){
     char *temp = NULL;
     int Number, i, j;
 
-    for(i = 0; i < listSize-1; i++){
-        for(j = i + 1; j < i; j++){
+    for(i = 0; i < listSize; i++){
+        for(j = i + 1; j < listSize-1; j++){
 
-            if(strncmp(participant0[i].firstName, participant0[j].firstName, 1) > 0){
+            if(strncmp(&participant0[i].firstName, &participant0[j].firstName, 1) > 0){
                 
                 temp = participant0[j].firstName;
                 participant0[j].firstName = participant0[i].firstName;
@@ -78,5 +76,4 @@ void Sort(participant* participant0){
             }
         }
     }
-    return;
 }

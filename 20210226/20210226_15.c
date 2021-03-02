@@ -29,7 +29,7 @@ for(int i=0;i<3;i++){
    }
 printf("chose a number from 1 to 16 to move\n");
 scanf(" %d",&choice);
-if(isalpha(choice1) == 0){
+
 
 for(int i=0;i<3;i++){
 
@@ -109,7 +109,7 @@ case 1:/*nadqsno*/
    }
    break;
     */
-}
+
 }
 
 

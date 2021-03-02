@@ -11,7 +11,7 @@ typedef struct participant{
  int age;
 }participant;
 
-void Sort(participant* participant0);
+void Sort(participant* participant0,int count);
 
 
 int main(){
@@ -38,7 +38,7 @@ int main(){
     scanf(" %c",&choice);
 }
 
-Sort(participant0);
+Sort(participant0,count);
 i=0;
 for(i=0;i<count;i++){
     printf("Num of part:%d\n",participant0[i].numOfPart);
@@ -49,12 +49,12 @@ for(i=0;i<count;i++){
 
  free(participant0);
 }
-void Sort(participant* participant0){
+void Sort(participant* participant0,int count){
     char *temp = NULL;
     int Number, i, j;
 
-    for(i = 0; i < listSize; i++){
-        for(j = i + 1; j < listSize; j++){
+    for(i = 0; i < count; i++){
+        for(j = i + 1; j < count; j++){
 
             if(strncmp(&participant0[i].firstName, &participant0[j].firstName, 1) > 0){
                 

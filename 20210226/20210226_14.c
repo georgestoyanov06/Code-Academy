@@ -11,15 +11,19 @@ typedef struct participant{
  int age;
 }participant;
 
+void addPart(participant* participant0);
 void Sort(participant* participant0,int count);
-
+void myPrint(participant* participant0,int count);
 
 int main(){
  participant *participant0;
- 
  participant0=malloc(listSize*sizeof(participant));
+ addPart(participant0);
+ free(participant0);
+}
 
- int i;
+void addPart(participant* participant0){
+    int i;
  int count=0;
  char choice='1';
  for(i=0;choice!='0';i++){
@@ -36,18 +40,19 @@ int main(){
     count++;
     printf("do you have another participant to add.Press 1 or pres 0 for exit. \n");
     scanf(" %c",&choice);
+   
 }
-
 Sort(participant0,count);
-i=0;
-for(i=0;i<count;i++){
+
+   myPrint(participant0,count);
+}
+void myPrint(participant* participant0,int count){
+    for(int i=0;i<count;i++){
     printf("Num of part:%d\n",participant0[i].numOfPart);
     printf("First name:%s\n",&participant0[i].firstName);
     printf("Second name:%s\n",&participant0[i].secondName);
     printf("age : %d\n",participant0[i].age);
 }
-
- free(participant0);
 }
 void Sort(participant* participant0,int count){
     char *temp = NULL;

@@ -9,12 +9,17 @@ int top;
 Stack create(int size); void destroy(Stack s);
 int pop(); void push()
 int top()
-int isFull(); int isEmpty(void)*/
+int isFull(); int isEmpty(void)
+
+
+не дава грешки след като старитрам еxe to крашва най-вероятноо сегментейшън фаулт 
+ще потърс информация за лифо фифо и ще се опитам да я оправя workin....
+*/
 #include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
 
-#define MAXSIZE 3
+#define MAXSIZE 10
 
 
 struct Stack{
@@ -42,7 +47,7 @@ void push(struct Stack* stack, int item)
 int pop(struct Stack* stack)
 {
     if (isEmpty(stack))
-        return INT_MIN;
+        
     return stack->contents[stack->top--];
 };
 int peek(struct Stack* stack)

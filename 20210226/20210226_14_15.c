@@ -10,7 +10,7 @@ typedef struct participant{
  char *secondName;
  int age;
 }participant;
-
+void myFree(participant *participant0);
 void addPart(participant* participant0);
 void Sort(participant* participant0,int count);
 void myPrint(participant* participant0,int count);
@@ -19,6 +19,7 @@ int main(){
  participant *participant0;
  participant0=malloc(listSize*sizeof(participant));
  addPart(participant0);
+ myFree(participant0);
  free(participant0);
 }
 
@@ -80,5 +81,12 @@ void Sort(participant* participant0,int count){
                 participant0[i].age= temp;
             }
         }
+    }
+}
+void myFree(participant *participant0){
+
+    for(int i=0;i<listSize;i++){
+        free(participant0[i].firstName);
+        free(participant0[i].secondName);
     }
 }

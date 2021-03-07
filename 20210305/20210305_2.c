@@ -8,6 +8,9 @@
 Потребителя се пита за броя на пратките пратки след което теглото на всяка пратка и обема и.
 Определете според пощенските такси в тази куриерска фирма как по-евтино да изпрати своите
 пратки като една или да ги изпрати като отделни пратки.
+
+
+Работя върху друго решение освен другото предоставено .
 */
 #include <stdio.h>
 #include <stdlib.h>
@@ -52,11 +55,24 @@ void funPratka(pratka *myPratka){
         printf("Vuvedete teglo na pratkata[%d]\n",i+1);
         scanf(" %d",&myPratka[i].teglo);
     }
-    
-   
+}  
+void funCena(cenaT* cena1,cenaO* cena2,int broiPratki,pratka *myPratka){
+    float sum;
+    int choice;
+    for(int i=0;i<broiPratki;i++){
+       
+        
+            if(myPratka->teglo<=){
+            sum+=cena1->cenaT
+           
 
+
+        }
+ 
+}
 
 }
+
 int main(){
     
     pratka *testPratka=NULL;

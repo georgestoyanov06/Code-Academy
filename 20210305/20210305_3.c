@@ -17,18 +17,27 @@
 #include <stdlib.h>
 float hijaVihren=1950;
 
-float funTemp1(float height,float temp1){
-    
-    float temp=temp1-(height-hijaVihren)*0.005;
+float funTemp1(float *height){
+    float temp1;
+    printf("Temperature at hut Vihren\n");
+    scanf(" %f",&temp1);
+    float temp=temp1-(*height-hijaVihren)*0.005;
     return temp;
 }
 
-float funTemp2(float height1,float temp2){
-    float temp=temp2+(height1- hijaVihren)*0.005;
+float funTemp2(float *height1){
+    float temp2;
+     printf("Temperature at peak Vihren\n");
+    scanf(" %f",&temp2);
+    float temp=temp2+(*height1- hijaVihren)*0.005;
     return temp;
 }
 
 int main(){
-    printf("%0.3f",funTemp1(2918,12));
-    
+   /* printf("%0.2f\n",funTemp1(2918));*/
+    float *heightVihren=malloc(sizeof(hijaVihren));
+    *heightVihren=2918;
+    printf("Temperature at hut Vihren :%0.2f\n",funTemp2(heightVihren));
+    printf("Temperature at peak Vihren :%0.2f\n",funTemp1(heightVihren));
+    free(heightVihren);
 }

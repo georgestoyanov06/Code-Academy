@@ -20,26 +20,44 @@ work in progress...
 #include <stdlib.h>
 #include <stdio.h>
     
-    
-    int pi[3]={0,0};
-    int pj[3]={0,0};
+    int maze[7][7]={{3,3,2,4,3,1,2},
+                    {2,4,2,3,2,4,3},
+                    {4,2,3,2,4,2,1},
+                    {4,4,1,2,2,3,4},
+                    {3,2,3,3,4,2,2},
+                    {3,2,4,2,3,2,1},
+                    {1,1,3,3,4,2,70,} };
+    int pi[2]={0,0};
+    int pj[2]={0,0};
+    int piBackUp[2]={0,0};
+    int pjBackUp[2]={0,0};
     char p1=3;
     char p2=4;
 void funPrint(int maze[][7]){
     
     for(int i=0;i<7;i++){
         for(int j=0;j<7;j++){
-        if(maze[i][j]=='F'){
-            printf("%c\t",maze[i][j]);
-        }
-        else if(pi[1]==i && pj[1]==j && pi[0]==i && pj[0]==j){
+      
+        if(pi[1]==i && pj[1]==j && pi[0]==i && pj[0]==j){
             printf("%c%d%c\t",p1,maze[i][j],p2);
         }
         else if(pi[0]==i&&pj[0]==j){
-            printf("%c%d\t",p1,maze[pi[0]][pj[0]]);
+            if(maze[i][j]==70){
+                printf("%c%c",p1,'F');
+            }
+            else{
+            printf("%c%d\t",p1,maze[pi[0]][pj[0]]);}
         }
-        else if(pi[1]==i&&pj[1]==j){
-            printf("%d%c\t",maze[pi[1]][pj[1]],p2);
+         else if(pi[1]==i&&pj[1]==j){
+              if(maze[i][j]==70){
+                printf("%c%c",'F',p2);
+            }else{
+            printf("%d%c\t",maze[pi[1]][pj[1]],p2);}
+        }
+        
+        else if(maze[i][j]=='F'){
+            
+            printf("%c\t",maze[i][j]);
         }
         
        
@@ -50,7 +68,17 @@ void funPrint(int maze[][7]){
     printf("\n");
 }
 }
-void funMain(int choice,int maze[][7],int player){
+void funMain(int maze[][7]){
+    int choice;
+    int i;
+    int player;
+    
+     
+    
+     printf("how manny players do you have\n");
+    scanf(" %d",&i);
+    while(1){
+    for( player=0;player<i;player++){
     printf("chose your path Player%d\n",player+1);
     scanf(" %d",&choice);
     
@@ -62,6 +90,7 @@ void funMain(int choice,int maze[][7],int player){
         }
         else{
         pi[player]=pi[player]+maze[pi[player]][pj[player]];
+        
         }
 
         break;
@@ -84,36 +113,44 @@ void funMain(int choice,int maze[][7],int player){
     case 4:/*nagore*/
     if(pi[player]-maze[pi[player]][pj[player]]<0){
          printf("choose different path\n");
+         
     }
     else{
        pi[player]=pi[player]-maze[pi[player]][pj[player]];
        }
         break;
+    
     }
-    funPrint(maze);
-
+ funPrint(maze);
+  printf("do you want to undo your turn.Press 5\n");
+  scanf(" %d",&choice);
+  if(choice==5){
+      pi[player]=piBackUp[player];
+      pj[player]=pjBackUp[player];
+      funPrint(maze);
+  }
+  
+  if(pi[player]==6 && pj[player]==6){
+  
+      
+      break;
+  }
+  piBackUp[player]=pi[player];
+  pjBackUp[player]=pj[player];
+  }
+  
+    if(pi[player]==6 && pj[player]==6){
+  
+      printf("Player%d won the game\n",player+1);
+      break;
+  }
+    }
 }  
 
 
 int main(){
-    int choicep1=0;
-    int choicep2=0;
-    int players=0;
-    int maze[7][7]={{3,3,2,4,3,1,2},
-                    {2,4,2,3,2,4,3},
-                    {4,2,3,2,4,2,1},
-                    {4,4,1,2,2,3,4},
-                    {3,2,3,3,4,2,2},
-                    {3,2,4,2,3,2,1},
-                    {1,1,3,3,4,2,70,} };
+    
     funPrint(maze);
-  printf("how manny players do you have\n");
-    scanf(" %d",&players);
-while(2){
-    for(int i=0;i<players;i++){
-    funMain(choicep1,maze,i);
-    }
-    
-    
-  }
+
+    funMain(maze);
 }

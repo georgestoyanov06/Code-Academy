@@ -48,7 +48,7 @@ int main(){
     materiali(ptrMoiSklad);/*С наличните на склад материали 
     (33 дълги дъски, 55 къси дъски, 88 малки скоби, 22 големи
 скоби и 99 винта) дърводелецът може да направи 7 етажерки.*/
-    printf("bri%d",ptrMoiSklad->a);
-    printf("broi etajerki %d",funEtajerki(ptrMoiSklad));
+    
+    printf("broi etajerki %d\n",funEtajerki(ptrMoiSklad));
     free(ptrMoiSklad);
 }

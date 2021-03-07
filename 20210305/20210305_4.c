@@ -31,8 +31,8 @@ work in progress...
     int pj[2]={0,0};
     int piBackUp[2]={0,0};
     int pjBackUp[2]={0,0};
-    char p1=3;
-    char p2=4;
+    char p1='A';/*тук бях сложил char p1=3, което вади сърце специален символ, но не на всеки му излизаше, същото бях направил и с p2*/
+    char p2='B';
 void funPrint(int maze[][7]){
     
     for(int i=0;i<7;i++){

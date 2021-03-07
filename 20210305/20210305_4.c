@@ -69,24 +69,31 @@ void funPrint(int maze[][7]){
 }
 }
 void funMain(int maze[][7]){
-    int choice;
+    char choice;
     int i;
     int player;
     
      
     
      printf("how manny players do you have\n");
-    scanf(" %d",&i);
+    scanf("%d",&i);
+    fflush(stdin);
     while(1){
     for( player=0;player<i;player++){
-    printf("chose your path Player%d\n",player+1);
-    scanf(" %d",&choice);
+   
+    printf("####### Instructions #######\n");
+    printf("Press 1 to move down\nPress 2 to move right\nPress 3 to move left\nPress 4 to move up\n");
+    printf("Be careful not to go out of borders because u will lose your turn\n");
+    printf("######## Good luck! ########\n");
+    printf("chose your path Traveler%d\n",player+1);
+    scanf("%c",&choice);
+     fflush(stdin);
     
     
     switch(choice){
-    case 1:/*nadolu*/
+    case '1':/*nadolu*/
         if((pi[player]+maze[pi[player]][pj[player]])>6){
-            printf("choose different path\n");
+            printf("Choose different path.You lose one turn be careful next time !\n");
         }
         else{
         pi[player]=pi[player]+maze[pi[player]][pj[player]];
@@ -96,23 +103,23 @@ void funMain(int maze[][7]){
         break;
   
   
-    case 2:/*nadqsno*/
+    case '2':/*nadqsno*/
     if(pj[player]+maze[pi[player]][pj[player]]>6){
-        printf("choose different path\n");
+        printf("Choose different path.You lose one turn be careful next time !\n");
     }   
     else{
         pj[player]=pj[player]+maze[pi[player]][pj[player]];}
         break;
-   case 3:/*nalqvo*/
+   case '3':/*nalqvo*/
    if(pj[player]-maze[pi[player]][pj[player]]<0){
-         printf("choose different path\n");}
+         printf("Choose different path.You lose one turn be careful next time !\n");}
          else{
         pj[player]=pj[player]-maze[pi[player]][pj[player]];
         }
         break;
-    case 4:/*nagore*/
+    case '4':/*nagore*/
     if(pi[player]-maze[pi[player]][pj[player]]<0){
-         printf("choose different path\n");
+         printf("Choose different path.You lose one turn be careful next time !\n");
          
     }
     else{
@@ -121,27 +128,31 @@ void funMain(int maze[][7]){
         break;
     
     }
+    
  funPrint(maze);
-  printf("do you want to undo your turn.Press 5\n");
-  scanf(" %d",&choice);
-  if(choice==5){
+ if(pi[player]==6 && pj[player]==6){
+  
+      
+      break;
+  }
+  printf("do you want to undo your turn.Press Y or N\n");
+  scanf("%c",&choice);
+  fflush(stdin);
+  
+  if(choice=='y'|| choice=='Y'){
       pi[player]=piBackUp[player];
       pj[player]=pjBackUp[player];
       funPrint(maze);
   }
   
-  if(pi[player]==6 && pj[player]==6){
   
-      
-      break;
-  }
   piBackUp[player]=pi[player];
   pjBackUp[player]=pj[player];
   }
   
     if(pi[player]==6 && pj[player]==6){
   
-      printf("Player%d won the game\n",player+1);
+      printf("Traveler%d won the game\n",player+1);
       break;
   }
     }

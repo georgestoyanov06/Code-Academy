@@ -10,6 +10,7 @@ char gender;
 #include <stdio.h>
 #include <string.h>
 
+const char* FORMAT_XML_WRITE = "<cat>\n\t<name>%s</name>\n\t<age>%d</age>\n\t<gender>%c</gender>\n</cat>\n";
 
  typedef struct Person{
 char name[20];
@@ -28,9 +29,9 @@ int main(){
     t_person dgeorgi;
 FILE *fp;
 fp=fopen("test18.xml","w+");
-fprintf(fp,"%s %d %c\n", georgi.name, georgi.age, georgi.gender);
+fprintf(fp,FORMAT_XML_WRITE , georgi.name, georgi.age, georgi.gender);
 fseek(fp, 0, SEEK_SET);
-fscanf(fp, "%s %d %c\n", dgeorgi.name, &dgeorgi.age, &dgeorgi.gender);
+fscanf(fp, FORMAT_XML_WRITE , dgeorgi.name, &dgeorgi.age, &dgeorgi.gender);
 printf("%s, %d, %c\n", dgeorgi.name, dgeorgi.age, dgeorgi.gender);
 fclose(fp);
 }

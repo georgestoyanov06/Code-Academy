@@ -26,6 +26,7 @@ int main(){
  participant *participant0;
  participant0=malloc(listSize*sizeof(participant));
  addPart(participant0);
+ 
 /* myFree(participant0);
  free(participant0);*/
 }
@@ -50,7 +51,7 @@ void addPart(participant* participant0){
     scanf(" %c",&choice);
    
 }
-
+myPrint(participant0,count);
 
    
 }

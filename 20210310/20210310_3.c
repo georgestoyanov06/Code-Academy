@@ -1,33 +1,68 @@
 /*Напишете програма за отпечатване на файловете добавени след а.ехе ,
 като започнете всеки нов на нова страница със заглавие и номере на всяка
-страница за всеки файл.*/
+страница за всеки файл
+
+working .*/
 #include <stdio.h>
 
-#define maxLineSize 40
-int linenum = 1;
-int pagenum = 1;
+#define MAX_LINES 42
+int lineNum = 1, pageNum = 1;
 
-void pageNum(FILE *fp){
+void printInFile(FILE* streamIn, FILE* streamOut, char *fname);
+
+int main(int argc, char* argv[])
+{
+    FILE *fpIn = NULL;
+    FILE *fpOut = NULL;
+
+    if((fpIn = fopen("textFormatted.c", "w")) == NULL) {
+        perror("Failed to open file1");
+    }
+
+    if(argc == 1) {
+        printf("\nUsage: > %s filename1 filename2 ... \n", argv[0]);
+    } else {
+
+        while(argc > 1) {
+            if((fpOut = fopen(*++argv, "r")) == NULL) {
+
+                perror("Failed to open the file2");
+
+            } else {
+                printInFile(fpIn, fpOut, *argv);
+                fclose(fpOut);
+            }
+            argc--;
+        }
+    }
+}
+
+void printInFile(FILE* streamIn, FILE* streamOut, char *fname) {
     int c;
 
-    while(1){
-    
-    c=fgetc(fp);
-    if(c=='\n'){
-        linenum+=1;
-    }
-    if(linenum==maxLineSize){
-        pageNum+=1;
-        linenum=1;
-    }
-    
-    if(feof(fp){
-        break;
-    }
+    fprintf(streamIn, "HEADER: FILENAME \t\t%s\n", fname);
+    lineNum++;
+
+    while(1) {
+        c = fgetc(streamOut);
+
+        if(feof(streamOut))
+            break;
+        
+        if(c == '\n') {
+            lineNum++;
+            if(lineNum % MAX_LINES == 0) {
+                fprintf(streamIn, "\n\nPage %d\n\n", pageNum);
+                pageNum++;
+            }
+        }
+
+        fprintf(streamIn, "%c", c);
     }
 
-}
-int main(int argc, char **argv){
-     FILE *fp;
-     
+    while(lineNum % MAX_LINES != 0) {
+        fprintf(streamIn, "\n");
+        lineNum++;
+    }
+    fprintf(streamIn, "\n\nPage %d\n\n", pageNum);
 }

@@ -94,7 +94,7 @@ bool processTerranTurn(BattleField *battleField) {
       for(i=0;i<battleField->terranFleet.size;i++){
     TerranAirship *currShip1=vectorGet(&battleField->terranFleet,i);
     ProtossAirship *currShip=vectorGet(&battleField->protossFleet,battleField->protossFleet.size-1);
-    printf("I =%d  %d \n",i,battleField->terranFleet.size);
+    printf("I =%d  terranfleet size%d \n",i,battleField->terranFleet.size);
     currShip->health-=currShip1->demage;
     printf("Curship health of protosfleet %d\n",currShip->health);
      if(currShip->health<=0){
@@ -104,11 +104,9 @@ bool processTerranTurn(BattleField *battleField) {
       return true;
       break;
       }
-    else{
-      return false;
-    }
-    }
+   
      }
+      }
      return false;
 }
     
@@ -118,7 +116,7 @@ bool processProtossTurn(BattleField *battleField) {
     ProtossAirship *currShip=vectorGet(&battleField->protossFleet,i);
     TerranAirship *currShip1=vectorGet(&battleField->terranFleet,battleField->terranFleet.size-1);
     
-    printf("I =%d  %d \n",i,battleField->protossFleet.size);
+    printf("I =%d  protosfleet size %d \n",i,battleField->protossFleet.size);
     currShip1->health-=currShip->demage;
      printf("Curship health1  terranFleet %d\n",currShip1->health);
     if(currShip1->health<=0){
@@ -128,11 +126,10 @@ bool processProtossTurn(BattleField *battleField) {
         return true;
         break;
       }
-      else{
-        return false;
-      }
-      }
-    }
-    return false;
+    
   }
+  }
+    return false;
+  
 
+}

@@ -91,14 +91,16 @@ bool processTerranTurn(BattleField *battleField) {
       if(ship->type == BATTLE_CRUSER){
         BattleCruser* battleCruser = (BattleCruser*)vectorGet(&battleField->terranFleet,i);
       }*/
-      while(i<battleField->terranFleet.size){
+      for(i=0;i<battleField->terranFleet.size;i++){
     TerranAirship *currShip1=vectorGet(&battleField->terranFleet,i);
     ProtossAirship *currShip=vectorGet(&battleField->protossFleet,battleField->protossFleet.size-1);
-    i++;
+    
     currShip->health-=currShip1->demage;
+    printf("Curship health %d\n",currShip->health);
      if(currShip->health<=0){
+      
     battleField->protossFleet.size-=1;
-    if(battleField->terranFleet.size==0){
+    if(battleField->protossFleet.size==0){
       return true;
       break;
       }
@@ -107,18 +109,22 @@ bool processTerranTurn(BattleField *battleField) {
     }
     }
      }
+     return false;
 }
     
 bool processProtossTurn(BattleField *battleField) {
   int i=0;
-  while(i<battleField->protossFleet.size){
+  for(i;i<battleField->protossFleet.size;i++){
     ProtossAirship *currShip=vectorGet(&battleField->protossFleet,i);
     TerranAirship *currShip1=vectorGet(&battleField->terranFleet,battleField->terranFleet.size-1);
-    i++;
+    
+    printf("I =%d  %d \n",i,battleField->protossFleet.size);
     currShip1->health-=currShip->demage;
+     printf("Curship health1 %d\n",currShip1->health);
     if(currShip1->health<=0){
+
       battleField->terranFleet.size-=1;
-      if(battleField->protossFleet.size==0){
+      if(battleField->terranFleet.size==0){
         return true;
         break;
       }
@@ -127,5 +133,6 @@ bool processProtossTurn(BattleField *battleField) {
       }
       }
     }
+    return false;
   }
 

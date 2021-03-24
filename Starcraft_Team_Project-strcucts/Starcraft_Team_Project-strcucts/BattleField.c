@@ -94,7 +94,7 @@ bool processTerranTurn(BattleField *battleField) {
       for(i=0;i<battleField->terranFleet.size;i++){
     TerranAirship *currShip1=vectorGet(&battleField->terranFleet,i);
     ProtossAirship *currShip=vectorGet(&battleField->protossFleet,battleField->protossFleet.size-1);
-    
+    printf("I =%d  %d \n",i,battleField->terranFleet.size);
     currShip->health-=currShip1->demage;
     printf("Curship health of protosfleet %d\n",currShip->health);
      if(currShip->health<=0){

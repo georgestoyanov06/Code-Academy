@@ -4,52 +4,109 @@
 #include "Vector.h"
 #include <string.h>
 #include "BattleField.h"
+int count=0;
+/*void shiled(Airship *curr,Airship *curr1){
+  if(curr1->shield>=0){
+    curr1->shield-=curr->demage;
+    if(curr1->shield<0){
+      curr1->health+=curr1->shield;
+    }
+  }
+  
+}*/
+void attackTerran(int count,Airship *curr,Airship *curr1){
+  if(curr->type==BATTLE_CRUSER && count%5==0 && count!=0){
+        printf("yamato cannon used\n");
+        if(curr1->shield>=0){
+          curr1->shield-=curr->demage*5;
+          if(curr1->shield<0){
+              curr1->health+=curr1->shield;
+              curr1->shield=0;
+          }
+          
+  }
+  }
+  else if(curr->type==VIKING && curr1->type==PHOENIX){
+        
+        if(curr1->shield>=0){
+          curr1->shield-=curr->demage*2;
+          if(curr1->shield<0){
+            curr1->health+=curr1->shield;
+            curr1->shield=0;
+          }        
+  }
+  }
+  else{
+    if(curr1->shield>=0){
+      curr1->shield-=curr->demage;
+      if(curr1->shield<0){
+        curr1->health+=curr1->shield;
+      }
+  }
+}
+}
+void regenProtos(Airship *curr1){
+    if(curr1->type==PHOENIX){
+      if(curr1->shield>=70){
+        curr1->shield=90;
+
+      }
+      else{
+        curr1->shield+=20;
+      }
+    }
 
 
+}
 bool processTerranTurn(BattleField *battleField) {
   int i;
- 
-      for(i=0;i<battleField->terranFleet.size;i++){
-    Airship *currShip=vectorGet(&battleField->terranFleet,i);
-    Airship *currShip1=vectorBack(&battleField->protossFleet);
-    printf("I =%d  terranfleet size%d \n",i,battleField->terranFleet.size);
-    currShip1->health=currShip1->health-currShip->demage;
-    printf("Curship health of protosfleet ship%d\n",currShip1->health);
+   Airship *currShip;
+   Airship *currShip1;
+
+      for(i=0;i<battleField->terranFleet.size;i++,count++){
+    currShip=vectorGet(&battleField->terranFleet,i);
+    currShip1=vectorBack(&battleField->protossFleet);
+    
+    attackTerran(count,currShip,currShip1);
+    
      if(currShip1->health<=0){
       
     vectorPop(&battleField->protossFleet);
     if(battleField->protossFleet.size==0){
-      printf("vliza\n");
+     
       return true;
       break;
       }
    
      }
       }
+      printf("Last ProtossAirShip with ID: %d has %d health and%d shield left\n",i-1,currShip1->health,currShip1->shield);
      return false;
 }
     
 bool processProtossTurn(BattleField *battleField) {
   int i=0;
+   Airship *currShip3;
+   Airship *currShip4;
   for(i;i<battleField->protossFleet.size;i++){
-    Airship *currShip3=vectorGet(&battleField->protossFleet,i);
-    Airship *currShip4=vectorBack(&battleField->terranFleet);
-    printf("terranfleet %d\n",battleField->terranFleet.size);
-    printf("I =%d  protosfleet size %d \n",i,battleField->protossFleet.size);
+     currShip3  =vectorGet(&battleField->protossFleet,i);
+     currShip4 =vectorBack(&battleField->terranFleet);
     currShip4->health=currShip4->health - currShip3->demage;
-    printf("Curship health1 --------------- terranFleet ship %d\n",currShip4->health);
+    regenProtos(currShip3);
+    
     if (currShip4->health < 0 || currShip4->health == 0)
     {
-    printf("ISKAM DA VLEZE");
+    
      vectorPop(&battleField->terranFleet);
       if(battleField->terranFleet.size<=0){
-        printf("vliza1\n");
+       
         return true;
         break;
       }
     
   }
   }
+  printf("Last Terran AirShip with ID: %d has %d health left\n",i-1,currShip4->health);
     return false;
   
 

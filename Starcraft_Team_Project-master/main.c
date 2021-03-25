@@ -4,7 +4,7 @@
 #include "Vector.h"
 #include <string.h>
 #include "BattleField.h"
-int count=1;
+int count=0;
 int interceptorAll=8;
 int interceptorHalf=4;
 int attackProtoss(Airship *curr,Airship *curr1,BattleField *battleField){
@@ -106,51 +106,60 @@ bool processTerranTurn(BattleField *battleField) {
   int i;
    Airship *currShip;
    Airship *currShip1;
-
-      for(i=0;i<battleField->terranFleet.size;i++,count++){
+    count++;
+      for( i=0;i<battleField->terranFleet.size;i++){
     currShip=vectorGet(&battleField->terranFleet,i);
     currShip1=vectorBack(&battleField->protossFleet);
     
     attackTerran(count,currShip,currShip1);
     
      if(currShip1->health<=0){
-      
+      printf("AirsShip with ID: %d killed enemy airship with ID: %d\n ",i,battleField->protossFleet.size);
     vectorPop(&battleField->protossFleet);
     if(battleField->protossFleet.size==0){
      
       return true;
       break;
       }
+      currShip1=vectorBack(&battleField->protossFleet);
    
      }
+   
       }
       printf("Last ProtossAirShip with ID: %d has %d health and%d shield left\n",i-1,currShip1->health,currShip1->shield);
+      
      return false;
 }
     
 bool processProtossTurn(BattleField *battleField) {
-  int i=0;
+    int i;
    Airship *currShip3;
    Airship *currShip4;
-  for(i;i<battleField->protossFleet.size;i++){
+  for( i=0;i<battleField->protossFleet.size;i++){
      currShip3  =vectorGet(&battleField->protossFleet,i);
      currShip4 =vectorBack(&battleField->terranFleet);
-  attackProtoss(currShip3,currShip4,battleField);
-    regenProtos(currShip3);
-    
+     attackProtoss(currShip3,currShip4,battleField);
+     regenProtos(currShip3);
+   
     if (currShip4->health < 0 || currShip4->health == 0)
     {
-    
+    printf("AirsShip with ID: %d killed enemy airship with ID: %d\n ",i, battleField->terranFleet.size);
+
      vectorPop(&battleField->terranFleet);
+     
       if(battleField->terranFleet.size<=0){
        
         return true;
         break;
       }
+     currShip4 =vectorBack(&battleField->terranFleet);
+
     
   }
+
+  
   }
-  printf("Last Terran AirShip with ID: %d has %d health left\n",i-1,currShip4->health);
+   printf("Last Terran AirShip with ID: %d has %d health left\n",i-1,currShip4->health);
     return false;
   
 

@@ -98,7 +98,7 @@ void regenProtos(Airship *curr1){
     }
 
     else if(curr1->type==CARRIER){
-      if(curr1->shield>=150){
+      if(curr1->shield>=110){
         curr1->shield=150;
       }
       else{

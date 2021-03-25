@@ -13,19 +13,20 @@ int attackProtoss(Airship *curr,Airship *curr1,BattleField *battleField){
         curr1=vectorBack(&battleField->terranFleet);
         curr1->health-=curr->demage;
         if(curr1->health<=0){
+           printf("Carrier killed enemy airship with ID: %d\n ",battleField->terranFleet.size);
           battleField->terranFleet.size-=1;
-
+         
         }
-      /*  if (curr1->health < 0 || curr1->health == 0)
+      
     {
-             vectorPop(&battleField->terranFleet);
+             
              if(battleField->terranFleet.size<=0){
        
                  return true;
                  break;
                  }
 
-             }*/
+             }
          }
       }
       else if(curr->type==CARRIER && curr->health<200){
@@ -34,21 +35,18 @@ int attackProtoss(Airship *curr,Airship *curr1,BattleField *battleField){
               curr1->health-=curr->demage;
               if(curr1->health<=0){
           battleField->terranFleet.size-=1;
-
+          printf("Carrier killed enemy airship with ID: %d\n ",battleField->terranFleet.size);
         }
-             /*  if (curr1->health < 0 || curr1->health == 0)
+             
     {
-             vectorPop(&battleField->terranFleet);
+             
                if(battleField->terranFleet.size<=0){
        
                  return true;
                  break;
                  }
-                
-                  
-                
 
-             }*/
+             }
             }
       }
       else{

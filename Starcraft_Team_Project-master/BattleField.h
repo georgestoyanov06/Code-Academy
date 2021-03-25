@@ -12,10 +12,10 @@ typedef struct {
 
 typedef struct {
   enum AirShipType type;
-  enum AirShipDefines health;
-  enum AirShipDefines demage;
-  enum AirShipDefines shield;
-  enum AirShipDefines shieldRegenerateRate;
+  int health;
+  int demage;
+  int shield;
+  int shieldRegenerateRate;
 } Airship;
 
 void generateTerranFleet(BattleField *battleField, const char *terranFleetStr);

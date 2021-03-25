@@ -37,8 +37,8 @@ bool processProtossTurn(BattleField *battleField) {
     printf("terranfleet %d\n",battleField->terranFleet.size);
     printf("I =%d  protosfleet size %d \n",i,battleField->protossFleet.size);
     currShip4->health=currShip4->health - currShip3->demage;
-    printf("Curship health1  terranFleet ship %d\n",currShip4->health);
-    if (currShip4->health < 0 || currShip4==0)
+    printf("Curship health1 --------------- terranFleet ship %d\n",currShip4->health);
+    if (currShip4->health < 0 || currShip4->health == 0)
     {
     printf("ISKAM DA VLEZE");
      vectorPop(&battleField->terranFleet);

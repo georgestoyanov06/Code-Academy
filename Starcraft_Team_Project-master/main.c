@@ -4,16 +4,51 @@
 #include "Vector.h"
 #include <string.h>
 #include "BattleField.h"
-int count=0;
-/*void shiled(Airship *curr,Airship *curr1){
-  if(curr1->shield>=0){
-    curr1->shield-=curr->demage;
-    if(curr1->shield<0){
-      curr1->health+=curr1->shield;
-    }
+int count=1;
+int interceptorAll=8;
+int interceptorHalf=4;
+int attackProtoss(Airship *curr,Airship *curr1,BattleField *battleField){
+  if(curr->type==CARRIER && curr->health==200){
+      for(int i=0;i<interceptorAll;i++){
+        curr1->health-=curr->demage;
+        if (curr1->health < 0 || curr1->health == 0)
+    {
+             vectorPop(&battleField->terranFleet);
+               if(battleField->terranFleet.size<=0){
+       
+                 return true;
+                 break;
+                 }
+                else{
+                  curr1=vectorBack(&battleField->terranFleet);
+                }
+
+             }
+         }
+      }
+      else if(curr->type==CARRIER && curr->health<200){
+            for(int i=0;i<interceptorHalf;i++){
+              curr1->health-=curr->demage;
+               if (curr1->health < 0 || curr1->health == 0)
+    {
+             vectorPop(&battleField->terranFleet);
+               if(battleField->terranFleet.size<=0){
+       
+                 return true;
+                 break;
+                 }
+                else{
+                  curr1=vectorBack(&battleField->terranFleet);
+                }
+
+             }
+            }
+      }
+      else{
+        curr1->health-=curr->demage;
+      }
   }
-  
-}*/
+
 void attackTerran(int count,Airship *curr,Airship *curr1){
   if(curr->type==BATTLE_CRUSER && count%5==0 && count!=0){
         printf("yamato cannon used\n");
@@ -41,6 +76,7 @@ void attackTerran(int count,Airship *curr,Airship *curr1){
       curr1->shield-=curr->demage;
       if(curr1->shield<0){
         curr1->health+=curr1->shield;
+        curr1->shield=0;
       }
   }
 }
@@ -56,6 +92,14 @@ void regenProtos(Airship *curr1){
       }
     }
 
+    else if(curr1->type==CARRIER){
+      if(curr1->shield>=150){
+        curr1->shield=150;
+      }
+      else{
+        curr1->shield+=40;
+      }
+    }
 
 }
 bool processTerranTurn(BattleField *battleField) {
@@ -91,7 +135,7 @@ bool processProtossTurn(BattleField *battleField) {
   for(i;i<battleField->protossFleet.size;i++){
      currShip3  =vectorGet(&battleField->protossFleet,i);
      currShip4 =vectorBack(&battleField->terranFleet);
-    currShip4->health=currShip4->health - currShip3->demage;
+  attackProtoss(currShip3,currShip4,battleField);
     regenProtos(currShip3);
     
     if (currShip4->health < 0 || currShip4->health == 0)

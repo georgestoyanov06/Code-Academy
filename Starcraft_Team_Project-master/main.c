@@ -10,26 +10,33 @@ int interceptorHalf=4;
 int attackProtoss(Airship *curr,Airship *curr1,BattleField *battleField){
   if(curr->type==CARRIER && curr->health==200){
       for(int i=0;i<interceptorAll;i++){
+        curr1=vectorBack(&battleField->terranFleet);
         curr1->health-=curr->demage;
-        if (curr1->health < 0 || curr1->health == 0)
+        if(curr1->health<=0){
+          battleField->terranFleet.size-=1;
+
+        }
+      /*  if (curr1->health < 0 || curr1->health == 0)
     {
              vectorPop(&battleField->terranFleet);
-               if(battleField->terranFleet.size<=0){
+             if(battleField->terranFleet.size<=0){
        
                  return true;
                  break;
                  }
-                else{
-                  curr1=vectorBack(&battleField->terranFleet);
-                }
 
-             }
+             }*/
          }
       }
       else if(curr->type==CARRIER && curr->health<200){
             for(int i=0;i<interceptorHalf;i++){
+              curr1=vectorBack(&battleField->terranFleet);
               curr1->health-=curr->demage;
-               if (curr1->health < 0 || curr1->health == 0)
+              if(curr1->health<=0){
+          battleField->terranFleet.size-=1;
+
+        }
+             /*  if (curr1->health < 0 || curr1->health == 0)
     {
              vectorPop(&battleField->terranFleet);
                if(battleField->terranFleet.size<=0){
@@ -37,11 +44,11 @@ int attackProtoss(Airship *curr,Airship *curr1,BattleField *battleField){
                  return true;
                  break;
                  }
-                else{
-                  curr1=vectorBack(&battleField->terranFleet);
-                }
+                
+                  
+                
 
-             }
+             }*/
             }
       }
       else{
@@ -139,8 +146,9 @@ bool processProtossTurn(BattleField *battleField) {
      currShip3  =vectorGet(&battleField->protossFleet,i);
      currShip4 =vectorBack(&battleField->terranFleet);
      attackProtoss(currShip3,currShip4,battleField);
+     currShip4=vectorBack(&battleField->terranFleet);
      regenProtos(currShip3);
-   
+
     if (currShip4->health < 0 || currShip4->health == 0)
     {
     printf("AirsShip with ID: %d killed enemy airship with ID: %d\n ",i, battleField->terranFleet.size);

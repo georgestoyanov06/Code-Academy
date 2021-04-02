@@ -11,4 +11,4 @@ funlist.o: funlist.c hfile.h
 projct1.o: project1.c hfile.h
 		$(CC) $(CFLAGS) -c project1.c
 clean: 
-		rm funlist.o Project2.exe procet1.o
+		del *.o Project2.exe

@@ -19,13 +19,13 @@ typedef struct excursion{
 
 extern excursion *start;
 void print();
-void init();
-int addData();
+int  addData();
 void printList();
 void longestVac();
 void outDated();
-void DEL();
+void deleteVac();
 FILE menu(FILE *fp);
 void* my_strcpy(char *from,char *to);
 void writeBinary(FILE *fp);
-void readBinary(FILE *fp);
+void checkDate(int *flag,int yy,int mm ,int dd);
+void init();

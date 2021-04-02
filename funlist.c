@@ -9,12 +9,46 @@ start = NULL;
 }
 
 excursion *start;
-void readBinary(FILE *fp){
-
-};
+void checkDate(int *flag,int yy,int mm ,int dd){
+    /*a lot of magic numbers with meaning of  days(from 1 to 31 )and months ( 1to 12)*/
+     if(yy>=1900 && yy<=9999)
+    {
+        //check month
+        if(mm>=1 && mm<=12)
+        {
+            //check days
+            if((dd>=1 && dd<=31) && (mm==1 || mm==3 || mm==5 || mm==7 || mm==8 || mm==10 || mm==12)){
+                printf("Date is valid.\n");
+                *flag=0;}
+            else if((dd>=1 && dd<=30) && (mm==4 || mm==6 || mm==9 || mm==11)){
+                printf("Date is valid.\n");
+                  *flag=0;}
+            else if((dd>=1 && dd<=28) && (mm==2)){
+                printf("Date is valid.\n");
+                  *flag=0;}
+            else if(dd==29 && mm==2 && (yy%400==0 ||(yy%4==0 && yy%100!=0))){
+                printf("Date is valid.\n");
+                  *flag=0;}
+            else{
+                printf("Day is invalid.\n");
+                *flag=1;
+                }
+        }
+        else
+        {
+            printf("Month is not valid.\n");
+             *flag=1;
+        }
+    }
+    else
+    {
+        printf("Year is not valid.\n");
+         *flag=1;
+    }
+}
 void print(){
             excursion *ptr;
-             printf("#######################################\n");
+            printf("#######################################\n");
             printf("The unique code is  %s\n",ptr->cod);
             printf("%02d.%02d.%02d\n",ptr->day,ptr->month,ptr->year);
             printf("The lenght of the excursion is  %d",ptr->vacationLenght);
@@ -41,10 +75,11 @@ void*  my_strcpy(char *from,char *to){
 
 int addData(){
     
-    excursion *p = start;
+    excursion *ptr = start;
     start = (excursion*)malloc(sizeof(excursion));
     int dd;
-    int mm;int yy; int vac;double price;
+    int mm,yy,vac;
+    double price;
     int flag=1;
     
     printf("Enter unique 10 digit code\n");
@@ -53,44 +88,11 @@ int addData(){
 
 
    while(flag){
-    //check year
+    
      printf("Enter date of leave (DD.MM.YYYY format): ");
      fflush(stdin);
-    scanf("%d.%d.%d",&dd,&mm,&yy);
-    if(yy>=1900 && yy<=9999)
-    {
-        //check month
-        if(mm>=1 && mm<=12)
-        {
-            //check days
-            if((dd>=1 && dd<=31) && (mm==1 || mm==3 || mm==5 || mm==7 || mm==8 || mm==10 || mm==12)){
-                printf("Date is valid.\n");
-                flag=0;}
-            else if((dd>=1 && dd<=30) && (mm==4 || mm==6 || mm==9 || mm==11)){
-                printf("Date is valid.\n");
-                  flag=0;}
-            else if((dd>=1 && dd<=28) && (mm==2)){
-                printf("Date is valid.\n");
-                  flag=0;}
-            else if(dd==29 && mm==2 && (yy%400==0 ||(yy%4==0 && yy%100!=0))){
-                printf("Date is valid.\n");
-                  flag=0;}
-            else{
-                printf("Day is invalid.\n");
-                flag=1;
-                }
-        }
-        else
-        {
-            printf("Month is not valid.\n");
-             flag=1;
-        }
-    }
-    else
-    {
-        printf("Year is not valid.\n");
-         flag=1;
-    }
+     scanf("%d.%d.%d",&dd,&mm,&yy);
+     checkDate(&flag,yy,mm,dd);
     }
     
     printf("enter lenght of the excursion\n");
@@ -100,36 +102,25 @@ int addData(){
     fflush(stdin);
     scanf("%ld",&price);
 
-
-    if (!start){ 
-        return -1;}
-  
-    
-
-
-
     start->day=dd;
     start->month=mm;
     start->year=yy;
     start->vacationLenght=vac;
     start->price=price;
-    start->next = p;
-
-
-
-
+    start->next = ptr;
 
 }
 
 void printList(){
     excursion *ptr = start;
     while(ptr != NULL){
-         printf("====================================\n");
+        
+        printf("====================================\n");
         printf("The unique code is  %s\n",ptr->cod);
         printf("%02d.%02d.%02d\n",ptr->day,ptr->month,ptr->year);
         printf("The lenght of the excursion is  %d\n",ptr->vacationLenght);
         printf("The price of the excursion is %ld\n",ptr->price);
-           printf('\n');
+        printf("\n");
         
         ptr = ptr->next;
         
@@ -141,7 +132,7 @@ void longestVac(){
     int max=0;
     int dd,yy,mm;
     char *ptr1;
-    ptr1=malloc(9);
+    ptr1=malloc(CODSIZE);
     double price;
    
      excursion *ptr = start;
@@ -150,7 +141,7 @@ void longestVac(){
         if(ptr->vacationLenght>max){
 
             max=ptr->vacationLenght;
-          dd=ptr->day;
+            dd=ptr->day;
             mm=ptr->month;
             yy=ptr->year;
             /*strcpy(cod,ptr->cod);*/
@@ -162,12 +153,13 @@ void longestVac(){
         }
         ptr=ptr->next;
 
-    }   printf("====================================\n");
+    }   
+     printf("====================================\n");
      printf("%s\n",ptr1);
      printf("Start date of the excursion %02d.%02d.%02d\n",dd,mm,yy);
      printf("The lenght of longest excursion %d\n",max);
      printf("The price of the excursion is %ld\n",price);
-    printf('\n');
+     printf("\n");
      free(ptr1);
      
 }
@@ -178,60 +170,26 @@ void outDated(){
     int dd,mm,yy;
     printf("What date is today\n");
     while(flag){
-    //check year
-     printf("Enter date (DD.MM.YYYY format): ");
-     fflush(stdin);
-    scanf("%d.%d.%d",&dd,&mm,&yy);
-    if(yy>=1900 && yy<=9999)
-    {
-        //check month
-        if(mm>=1 && mm<=12)
-        {
-            //check days
-            if((dd>=1 && dd<=31) && (mm==1 || mm==3 || mm==5 || mm==7 || mm==8 || mm==10 || mm==12)){
-                printf("Date is valid.\n");
-                flag=0;}
-            else if((dd>=1 && dd<=30) && (mm==4 || mm==6 || mm==9 || mm==11)){
-                printf("Date is valid.\n");
-                  flag=0;}
-            else if((dd>=1 && dd<=28) && (mm==2)){
-                printf("Date is valid.\n");
-                  flag=0;}
-            else if(dd==29 && mm==2 && (yy%400==0 ||(yy%4==0 && yy%100!=0))){
-                printf("Date is valid.\n");
-                  flag=0;}
-            else{
-                printf("Day is invalid.\n");
-                flag=1;
-                }
-        }
-        else
-        {
-            printf("Month is not valid.\n");
-             flag=1;
-        }
-    }
-    else
-    {
-        printf("Year is not valid.\n");
-         flag=1;
-    }
+        printf("Enter date (DD.MM.YYYY format): ");
+        fflush(stdin);
+        scanf("%d.%d.%d",&dd,&mm,&yy);
+        checkDate(&flag,yy,mm,dd);
     }
     excursion *ptr = start;    
     while(ptr!=NULL){
         if((yy>ptr->year) || (yy==ptr->year && mm>ptr->month) || (yy==ptr->year && mm==ptr->month && dd>ptr->day) ){
-             printf("===================================\n");
+            printf("===================================\n");
             printf("The unique code is  %s\n",ptr->cod);
             printf("%02d.%02d.%02d\n",ptr->day,ptr->month,ptr->year);
             printf("The lenght of the excursion is  %d\n",ptr->vacationLenght);
             printf("The price of the excursion is %ld\n",ptr->price);
-               printf('\n');
+            printf("\n");
         }
          ptr=ptr->next;
     }
     }
 
-    void DEL(){
+    void deleteVac(){
         char cod[10];
         int lenght;
         int year;
@@ -244,22 +202,14 @@ void outDated(){
         scanf("%d",&lenght);
         printf("enter the year of the excursion ");
         scanf("%d",&year);
-        while(ptr->year!=year && ptr->vacationLenght!=lenght && strcmp(cod,ptr->cod) ){    
+        while(ptr->year!=year && ptr->vacationLenght!=lenght && strcmp(cod,ptr->cod) && ptr!=NULL ){    
               
             prev=ptr;
             ptr=ptr->next;
             }
-            
-            /*prev->next=ptr->next;*/
-            
-            if(ptr->next==NULL){
-                prev->next=NULL;
-            }
-            else{
-                prev->next=ptr->next;
-            }
 
-            free(ptr);
+       prev->next=ptr->next;
+       free(ptr);
     
         }
     
@@ -289,7 +239,7 @@ void outDated(){
                     outDated();
                     break;
                 case 4:
-                    DEL();
+                    deleteVac();
                     break;
                 case 5:
                 printList();
@@ -301,7 +251,7 @@ void outDated(){
                     printf("Please enter the number again\n");
                     break;
             }
-            fp=fopen("file.bin","wb+");
+            fp=fopen("file.bin","a+b");
             writeBinary(fp);
             
         }

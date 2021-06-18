@@ -1,7 +1,7 @@
 #!/bin/bash
 str1=$1
 str2=$2
-gcc exer5.c -o launch
+gcc lec12ex5.c.c -o launch
 ./launch $str1 $str2
 READ=$?
 if [ "$READ" -eq "0"  ]

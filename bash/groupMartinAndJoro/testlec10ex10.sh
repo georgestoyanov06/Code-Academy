@@ -1,7 +1,7 @@
 #!/bin/bash
 NUM=$1
 BASE=$2
-gcc exer12.c -o launch
+gcc lecture10.ex.10.c.c -o launch
 ./launch $NUM $BASE
 READ=$?
 if [ "$READ" -eq "0"  ]
